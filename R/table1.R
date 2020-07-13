@@ -352,7 +352,7 @@ render.default <- function(x, name, missing=any(is.na(x)), transpose=F,
         stop(paste("Unrecognized variable type:", class(x)))
     }
     if (missing && !is.null(render.missing)) {
-        r <- c(r, do.call(render.missing, c(list(x=x), list(...))))
+        r <- c(r, do.call(render.missing, c(list(x=x), list(name=name), list(...))))
     }
     if (transpose) {
         if (!is.null(names(r))) {
