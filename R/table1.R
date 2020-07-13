@@ -241,7 +241,7 @@ stats.default <- function(x, quantile.type=7, ...) {
 #'
 #' @keywords utilities
 #' @export
-stats.apply.rounding <- function(x, digits=3, digits.pct=1, round.median.min.max=TRUE, round.integers=TRUE, round5up=TRUE, ...) {
+stats.apply.rounding <- function(x, digits=3, digits.pct=0, round.median.min.max=TRUE, round.integers=TRUE, round5up=TRUE, ...) {
     mindig <- function(x, digits) {
         cx <- format(x)
         ndig <- nchar(gsub("\\D", "", cx))

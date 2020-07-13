@@ -7,7 +7,7 @@
 stats.apply.rounding(
   x,
   digits = 3,
-  digits.pct = 1,
+  digits.pct = 0,
   round.median.min.max = TRUE,
   round.integers = TRUE,
   round5up = TRUE,
