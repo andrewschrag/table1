@@ -4,7 +4,7 @@
 \alias{render.continuous.default}
 \title{Render continuous values for table output.}
 \usage{
-render.continuous.default(x, name = NULL, ...)
+render.continuous.default(x, ...)
 }
 \arguments{
 \item{x}{A numeric vector.}
