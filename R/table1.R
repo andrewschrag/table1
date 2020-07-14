@@ -345,15 +345,14 @@ render.default <- function(x, name, missing=any(is.na(x)), transpose=F,
         x <- factor(x, levels=c(T, F), labels=c("Yes", "No"))
     }
     if (is.factor(x) || is.character(x)) {
-        r <- do.call(render.categorical, c(list(x=x), list(name=name), list(...)))
+        r <- do.call(render.categorical, c(list(x=x), list(...)))
     } else if (is.numeric(x)) {
-        r <- do.call(render.continuous, c(list(x=x),  list(name=name), list(...)))
+        r <- do.call(render.continuous, c(list(x=x), list(...)))
     } else {
         stop(paste("Unrecognized variable type:", class(x)))
     }
     if (missing && !is.null(render.missing)) {
         r <- c(r, do.call(render.missing, c(list(x=x), list(name=name), list(...))))
-                      
     }
     if (transpose) {
         if (!is.null(names(r))) {
@@ -463,7 +462,7 @@ function(code, ...) {
 #' 
 #' @keywords utilities
 #' @export
-render.continuous.default <- function(x, name=NULL, ...) {
+render.continuous.default <- function(x, ...) {
     with(stats.apply.rounding(stats.default(x, ...), ...), c("",
         "Mean (SD)"         = sprintf("%s (%s)", MEAN, SD),
         "Median [Min, Max]" = sprintf("%s [%s, %s]", MEDIAN, MIN, MAX)))
@@ -491,7 +490,7 @@ render.continuous.default <- function(x, name=NULL, ...) {
 #' render.categorical.default(y)
 #' @keywords utilities
 #' @export
-render.categorical.default <- function(x, name=NULL, ..., na.is.category=TRUE) {
+render.categorical.default <- function(x, ..., na.is.category=TRUE) {
     c("", sapply(stats.apply.rounding(stats.default(x, ...), ...), function(y) with(y,
         sprintf("%s (%s%%)", FREQ, if (na.is.category) PCT else PCTnoNA))))
 }
@@ -515,7 +514,7 @@ render.categorical.default <- function(x, name=NULL, ..., na.is.category=TRUE) {
 #' render.missing.default(y)
 #' @keywords utilities
 #' @export
-render.missing.default <- function(x, name, ...) {
+render.missing.default <- function(x, ...) {
     with(stats.apply.rounding(stats.default(is.na(x), ...), ...)$Yes,
         c(Missing=sprintf("%s (%s%%)", FREQ, PCT)))
 }
