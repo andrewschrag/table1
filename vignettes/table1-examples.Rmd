@@ -139,11 +139,11 @@ less control over rounding (see below). Here, for example, we specify render
 functions for the continuous and categorical variables as follows:
 
 ```{r}
-my.render.cont <- function(x) {
+my.render.cont <- function(x, ...) {
     with(stats.apply.rounding(stats.default(x), digits=2), c("",
         "Mean (SD)"=sprintf("%s (&plusmn; %s)", MEAN, SD)))
 }
-my.render.cat <- function(x) {
+my.render.cat <- function(x, ...) {
     c("", sapply(stats.default(x), function(y) with(y,
         sprintf("%d (%0.0f %%)", FREQ, PCT))))
 }

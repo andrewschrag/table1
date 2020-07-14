@@ -4,7 +4,7 @@
 \alias{render.categorical.default}
 \title{Render categorical values for table output.}
 \usage{
-render.categorical.default(x, ..., na.is.category = TRUE)
+render.categorical.default(x, name = NULL, ..., na.is.category = TRUE)
 }
 \arguments{
 \item{x}{A vector of type \code{factor}, \code{character} or \code{logical}.}
